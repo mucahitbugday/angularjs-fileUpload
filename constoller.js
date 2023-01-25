@@ -5,16 +5,6 @@ var app = angular.module('myApp', ['angularFileUpload']);
 app.controller('fileUpload', function($scope, FileUploader) {
 
 
-
-
-
-
-});
-
-
-
-
-app.controller('AppController', ['$scope', 'FileUploader', function($scope, FileUploader) {
     var uploader = $scope.uploader = new FileUploader({
         url: 'upload.php'
             //,timeout: 2000
@@ -25,7 +15,7 @@ app.controller('AppController', ['$scope', 'FileUploader', function($scope, File
     // a sync filter
     uploader.filters.push({
         name: 'syncFilter',
-        fn: function(item /*{File|FileLikeObject}*/ , options) {
+        fn: function(item, options) {
             console.log('syncFilter');
             return this.queue.length < 10;
         }
@@ -34,7 +24,7 @@ app.controller('AppController', ['$scope', 'FileUploader', function($scope, File
     // an async filter
     uploader.filters.push({
         name: 'asyncFilter',
-        fn: function(item /*{File|FileLikeObject}*/ , options, deferred) {
+        fn: function(item, options, deferred) {
             console.log('asyncFilter');
             setTimeout(deferred.resolve, 1e3);
         }
@@ -42,7 +32,7 @@ app.controller('AppController', ['$scope', 'FileUploader', function($scope, File
 
     // CALLBACKS
 
-    uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/ , filter, options) {
+    uploader.onWhenAddingFileFailed = function(item, filter, options) {
         console.info('onWhenAddingFileFailed', item, filter, options);
     };
     uploader.onAfterAddingFile = function(fileItem) {
@@ -82,4 +72,4 @@ app.controller('AppController', ['$scope', 'FileUploader', function($scope, File
     };
 
     console.info('uploader', uploader);
-}]);
+});

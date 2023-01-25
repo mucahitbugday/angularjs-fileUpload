@@ -16,17 +16,11 @@
 
 
 <body ng-app="myApp">
-    <div ng-controller="AppController">
+    <div ng-controller="fileUpload">
 
 
 
         <input type="file" nv-file-select="" uploader="uploader" multiple /><br />
-
-
-
-
-
-
 
 
         <div class="col-md-9" style="margin-bottom: 40px">
@@ -34,8 +28,8 @@
             <h3>Upload queue</h3>
             <p>Queue length: {{ uploader.queue.length }}</p>
 
-            <table class="table">
-                <thead>
+            <table class="table" style="border: 1px solid black;">
+                <thead style="border: 1px solid black;">
                     <tr>
                         <th width="50%">Name</th>
                         <th ng-show="uploader.isHTML5">Size</th>
